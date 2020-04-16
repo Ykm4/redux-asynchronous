@@ -1,20 +1,32 @@
-let nextId = 0;
-export const addTodo = newTodo => {
-  return {
-    type: 'ADD_TODO',
-    payload: {
-      id: ++nextId,
-      text: newTodo
-    }
-  };
+export const getTodo = () => async (dispatch) => {
+  const res = await fetch("/list");
+  const data = await res.json();
+  dispatch({
+    type: "GET_TODO",
+    payload: data,
+  });
 };
 
-export const deleteTodo = todo => {
-  return {
-    type: 'DELETE_TODO',
-    id: todo.id
-  }
-}
+export const addTodo = (newTodo) => async (dispatch) => {
+  const res = await fetch("/list", {
+    method: "POST",
+    body: JSON.stringify({ text: newTodo }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await res.json();
+  dispatch({
+    type: "ADD_TODO",
+    payload: data,
+  });
+};
 
-
-
+export const deleteTodo = (id) => async (dispatch) => {
+  // serverに対してDELETEリクエストを送るのみで良い
+  await fetch(`/list/${id}`, { method: "DELETE" });
+  dispatch({
+    type: "DELETE_TODO",
+    id,
+  });
+};

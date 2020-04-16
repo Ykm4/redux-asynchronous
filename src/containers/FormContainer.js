@@ -8,6 +8,7 @@ const Form = ({ dispatch }) => {
   const handleAddTodo = (e) => {
     e.preventDefault();
     dispatch(addTodo(text))
+    // addTodo(text)
     setText("");
   };
 
