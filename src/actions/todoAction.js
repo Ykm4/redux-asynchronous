@@ -9,7 +9,7 @@ export const addTodo = newTodo => {
   };
 };
 
-export const removeTodo = todo => {
+export const deleteTodo = todo => {
   return {
     type: 'DELETE_TODO',
     id: todo.id
