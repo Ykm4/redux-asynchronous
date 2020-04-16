@@ -3,7 +3,7 @@ import Todo from "../components/Todo";
 import { deleteTodo } from "../actions/todoAction";
 
 const mapStateToProps = (state) => ({
-  todoList: state.todo.list
+  todo: state.todo
 });
 
 const mapDispatchToProps = (dispatch) => ({

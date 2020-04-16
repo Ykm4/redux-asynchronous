@@ -1,5 +1,6 @@
 import React from "react";
-const Todo = ({ todoList, deleteTodo }) => {
+const Todo = ({ todo, deleteTodo }) => {
+  const {todoList, loading} = todo
   return (
     <>
       <ul>
