@@ -1,32 +1,33 @@
+import { GET_TODO, ADD_TODO, DELETE_TODO } from './types';
+
 export const getTodo = () => async (dispatch) => {
-  const res = await fetch("/list");
+  const res = await fetch('/list');
   const data = await res.json();
   dispatch({
-    type: "GET_TODO",
+    type: GET_TODO,
     payload: data,
   });
 };
 
 export const addTodo = (newTodo) => async (dispatch) => {
-  const res = await fetch("/list", {
-    method: "POST",
+  const res = await fetch('/list', {
+    method: 'POST',
     body: JSON.stringify({ text: newTodo }),
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
   const data = await res.json();
   dispatch({
-    type: "ADD_TODO",
+    type: ADD_TODO,
     payload: data,
   });
 };
 
 export const deleteTodo = (id) => async (dispatch) => {
-  // serverに対してDELETEリクエストを送るのみで良い
-  await fetch(`/list/${id}`, { method: "DELETE" });
+  await fetch(`/list/${id}`, { method: 'DELETE' });
   dispatch({
-    type: "DELETE_TODO",
+    type: DELETE_TODO,
     id,
   });
 };

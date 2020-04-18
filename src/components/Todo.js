@@ -1,17 +1,16 @@
-import React, {useEffect} from "react";
-const Todo = ({ todo, getTodo , deleteTodo }) => {
-  const {todoList, loading} = todo
-  console.log(getTodo)
+import React, { useEffect } from 'react';
+const Todo = ({ todo, getTodo, deleteTodo }) => {
+  const { todoList, loading } = todo;
   useEffect(() => {
-    getTodo()
-  }, [])
+    getTodo();
+  }, []);
   return (
     <>
       <ul>
         {todoList.map((todo) => (
           <li key={todo.id}>
             {todo.text}
-            <button onClick={() => deleteTodo(todo.id)} type="button">
+            <button onClick={() => deleteTodo(todo.id)} type='button'>
               削除
             </button>
           </li>
