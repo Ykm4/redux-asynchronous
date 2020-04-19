@@ -7,15 +7,10 @@ const TodoItem = ({ todo, deleteTodo, updateTodo }) => {
 
   return (
     <StyledTodoItem>
-      <Text>{text}</Text>
-      <input
+      <UpdateInput
         value={text}
-        onChange={(e) => {
-          setText(e.target.value);
-        }}
-        onBlur={() => {
-          updateTodo(id, text);
-        }}
+        onChange={(e) => setText(e.target.value)}
+        onBlur={() => updateTodo(id, text)}
       />
       <Button type='button' onClick={() => deleteTodo(id)}>
         削除
@@ -28,15 +23,22 @@ export const StyledTodoItem = styled.li`
   border-bottom: 1px solid navy;
   margin-bottom: 5px;
   padding: 10px 0;
-`;
-
-export const Text = styled.p`
-  display: inline;
-  font-size: 1.6rem;
   &::before {
     content: 'Task:';
     font-weight: bold;
     margin-right: 5px;
+  }
+`;
+
+export const UpdateInput = styled.input`
+  border: none;
+  font-size: 1.6rem;
+  padding: 5px;
+  overflow: auto;
+  width: 80%;
+  &:focus {
+    border-bottom: 1px dotted black;
+    outline: none;
   }
 `;
 

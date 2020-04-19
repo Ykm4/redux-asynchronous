@@ -2,7 +2,6 @@ import { GET_TODO, ADD_TODO, DELETE_TODO } from '../actions/types';
 
 const initialState = {
   todoList: [],
-  loading: false,
 };
 
 const TodoReducer = (state = initialState, action) => {
