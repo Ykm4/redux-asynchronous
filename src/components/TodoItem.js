@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useDeleteData, useUpdateData } from '../customHook';
 
-const TodoItem = ({ todo, deleteTodo, updateTodo }) => {
+const TodoItem = ({ todo }) => {
   const { id, task } = todo;
   const [text, setText] = useState(task);
+  const [deleteTodo] = useDeleteData();
+  const [updateTodo] = useUpdateData();
 
   return (
     <StyledTodoItem>
@@ -19,7 +22,7 @@ const TodoItem = ({ todo, deleteTodo, updateTodo }) => {
   );
 };
 
-export const StyledTodoItem = styled.li`
+const StyledTodoItem = styled.li`
   border-bottom: 1px solid navy;
   margin-bottom: 5px;
   padding: 10px 0;
@@ -30,7 +33,7 @@ export const StyledTodoItem = styled.li`
   }
 `;
 
-export const UpdateInput = styled.input`
+const UpdateInput = styled.input`
   border: none;
   font-size: 1.6rem;
   padding: 5px;
@@ -42,7 +45,7 @@ export const UpdateInput = styled.input`
   }
 `;
 
-export const Button = styled.button`
+const Button = styled.button`
   background-color: firebrick;
   border: 1px solid firebrick;
   border-radius: 6px;

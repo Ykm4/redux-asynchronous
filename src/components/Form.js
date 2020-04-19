@@ -14,12 +14,12 @@ const Form = ({ handleAddTodo, text, setText }) => {
   );
 };
 
-export const StyledForm = styled.form`
+const StyledForm = styled.form`
   display: flex;
   justify-content: space-between;
 `;
 
-export const FormInput = styled.input`
+const FormInput = styled.input`
   flex: 1 1 auto;
   border: 1px solid lightslategray;
   border-radius: 20px;
@@ -31,7 +31,7 @@ export const FormInput = styled.input`
   }
 `;
 
-export const Button = styled.button`
+const Button = styled.button`
   background-color: navy;
   border-radius: 12px;
   color: #ffffff;

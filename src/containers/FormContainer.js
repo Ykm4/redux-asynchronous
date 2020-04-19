@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Form from '../components/Form';
-import { addTodo } from '../actions/todoAction';
-import { connect } from 'react-redux';
+import { useAddData } from '../customHook';
 
-const FormContainer = ({ addTodo }) => {
+const FormContainer = () => {
   const [text, setText] = useState('');
+  const [addTodo] = useAddData();
 
   const handleAddTodo = (event) => {
     event.preventDefault();
@@ -17,4 +17,4 @@ const FormContainer = ({ addTodo }) => {
   return <Form handleAddTodo={handleAddTodo} text={text} setText={setText} />;
 };
 
-export default connect(null, { addTodo })(FormContainer);
+export default FormContainer;
