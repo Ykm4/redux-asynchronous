@@ -9,10 +9,10 @@ export const getTodo = () => async (dispatch) => {
   });
 };
 
-export const addTodo = (newTodo) => async (dispatch) => {
+export const addTodo = (text) => async (dispatch) => {
   const res = await fetch('/list', {
     method: 'POST',
-    body: JSON.stringify({ text: newTodo }),
+    body: JSON.stringify({ text }),
     headers: {
       'Content-Type': 'application/json',
     },

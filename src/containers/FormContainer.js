@@ -1,30 +1,54 @@
-import React, { useState } from "react";
-import { addTodo } from "../actions/todoAction";
-import { connect } from "react-redux";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { addTodo } from '../actions/todoAction';
+import { connect } from 'react-redux';
 
-const Form = ({ dispatch }) => {
-  const [text, setText] = useState("");
+const Form = ({ addTodo }) => {
+  const [text, setText] = useState('');
 
   const handleAddTodo = (e) => {
     e.preventDefault();
-    dispatch(addTodo(text))
-    // addTodo(text)
-    setText("");
+    addTodo(text);
+    setText('');
   };
 
   return (
-    <form onSubmit={handleAddTodo}>
-      <label>
-        Todoを入力
-        <input
-          type="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-      </label>
-      <button type="submit">追加</button>
-    </form>
+    <StyledForm onSubmit={handleAddTodo}>
+      <FormInput
+        type='text'
+        value={text}
+        onChange={(event) => setText(event.target.value)}
+      />
+      <Button type='submit'>追加</Button>
+    </StyledForm>
   );
 };
 
-export default connect()(Form);
+export const StyledForm = styled.form`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const FormInput = styled.input`
+  flex: 1 1 auto;
+  border: 1px solid lightslategray;
+  border-radius: 20px;
+  font-size: 1.5rem;
+  padding: 5px 20px;
+  &:active,
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const Button = styled.button`
+  background-color: navy;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin-left: 10px;
+  padding: 5px 18px;
+  cursor: pointer;
+`;
+
+export default connect(null, { addTodo })(Form);

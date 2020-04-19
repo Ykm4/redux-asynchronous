@@ -1,19 +1,16 @@
 import React, { useEffect } from 'react';
+import TodoItem from './TodoItem';
 const Todo = ({ todo, getTodo, deleteTodo }) => {
-  const { todoList, loading } = todo;
+  const { todoList } = todo;
   useEffect(() => {
     getTodo();
+    // eslint-disable-next-line
   }, []);
   return (
     <>
       <ul>
         {todoList.map((todo) => (
-          <li key={todo.id}>
-            {todo.text}
-            <button onClick={() => deleteTodo(todo.id)} type='button'>
-              削除
-            </button>
-          </li>
+          <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} />
         ))}
       </ul>
     </>
