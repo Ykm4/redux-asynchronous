@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_TODO, ADD_TODO, DELETE_TODO } from './types';
+import { GET_TODO, ADD_TODO, DELETE_TODO, UPDATE_TODO } from './types';
 
 export const getTodo = () => async (dispatch) => {
   const res = await axios.get('/list');
@@ -31,7 +31,7 @@ export const updateTodo = (id, text) => async (dispatch) => {
   const res = await axios.put(`/list/${id}`, { task: text });
   const data = res.data;
   dispatch({
-    type: 'UPDATE_TODO',
+    type: UPDATE_TODO,
     id,
     payload: data,
   });
