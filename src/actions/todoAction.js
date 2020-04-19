@@ -11,7 +11,7 @@ export const getTodo = () => async (dispatch) => {
 };
 
 export const addTodo = (text) => async (dispatch) => {
-  const res = await axios.post('/list', { text });
+  const res = await axios.post('/list', { task: text });
   const data = await res.data;
   dispatch({
     type: ADD_TODO,
@@ -24,5 +24,15 @@ export const deleteTodo = (id) => async (dispatch) => {
   dispatch({
     type: DELETE_TODO,
     id,
+  });
+};
+
+export const updateTodo = (id, text) => async (dispatch) => {
+  const res = await axios.put(`/list/${id}`, { task: text });
+  const data = res.data;
+  dispatch({
+    type: 'UPDATE_TODO',
+    id,
+    payload: data,
   });
 };

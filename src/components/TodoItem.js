@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const TodoItem = ({ todo, deleteTodo }) => {
-  const { id, text } = todo;
+const TodoItem = ({ todo, deleteTodo, updateTodo }) => {
+  const { id, task } = todo;
+  const [text, setText] = useState(task);
+
   return (
     <StyledTodoItem>
       <Text>{text}</Text>
+      <input
+        value={text}
+        onChange={(e) => {
+          setText(e.target.value);
+        }}
+        onBlur={() => {
+          updateTodo(id, text);
+        }}
+      />
       <Button type='button' onClick={() => deleteTodo(id)}>
         削除
       </Button>

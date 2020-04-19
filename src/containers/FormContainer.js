@@ -6,8 +6,10 @@ import { connect } from 'react-redux';
 const FormContainer = ({ addTodo }) => {
   const [text, setText] = useState('');
 
-  const handleAddTodo = (e) => {
-    e.preventDefault();
+  const handleAddTodo = (event) => {
+    event.preventDefault();
+    // 空文字・空白や改行に対してのvalidation
+    if (!text || !text.match(/\S/g)) return;
     addTodo(text);
     setText('');
   };
