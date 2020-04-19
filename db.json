@@ -1,32 +1,20 @@
 {
   "list": [
     {
-      "id": 1,
-      "text": "json-serverのデータだよ"
+      "task": "ffffffffffffffffffffffffffffffffffffsfsdfsfsfffdf",
+      "id": 1
     },
     {
-      "text": "fsadas",
+      "task": "fsadasfffffffffff",
       "id": 2
     },
     {
-      "text": "fsadfasdf",
+      "task": "これならなんとか出来そう",
       "id": 3
     },
     {
-      "text": "todoList",
+      "task": "affaaaaa",
       "id": 4
-    },
-    {
-      "text": "ff",
-      "id": 5
-    },
-    {
-      "text": "a",
-      "id": 7
-    },
-    {
-      "text": "saf",
-      "id": 8
     }
   ]
 }
