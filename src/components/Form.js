@@ -1,25 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Form = ({ handleAddTodo, text, setText }) => {
+const Form = ({ text, handleOnSubmit, handleOnChange }) => {
   return (
-    <StyledForm onSubmit={handleAddTodo}>
-      <FormInput
-        type='text'
-        value={text}
-        onChange={(event) => setText(event.target.value)}
-      />
+    <StyledForm onSubmit={handleOnSubmit}>
+      <FormInput type='text' value={text} onChange={handleOnChange} />
       <Button type='submit'>追加</Button>
     </StyledForm>
   );
 };
 
-export const StyledForm = styled.form`
+const StyledForm = styled.form`
   display: flex;
   justify-content: space-between;
 `;
 
-export const FormInput = styled.input`
+const FormInput = styled.input`
   flex: 1 1 auto;
   border: 1px solid lightslategray;
   border-radius: 20px;
@@ -31,7 +27,7 @@ export const FormInput = styled.input`
   }
 `;
 
-export const Button = styled.button`
+const Button = styled.button`
   background-color: navy;
   border-radius: 12px;
   color: #ffffff;
