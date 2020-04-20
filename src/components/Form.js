@@ -1,14 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Form = ({ handleAddTodo, text, setText }) => {
+const Form = ({ text, handleOnSubmit, handleOnChange }) => {
   return (
-    <StyledForm onSubmit={handleAddTodo}>
-      <FormInput
-        type='text'
-        value={text}
-        onChange={(event) => setText(event.target.value)}
-      />
+    <StyledForm onSubmit={handleOnSubmit}>
+      <FormInput type='text' value={text} onChange={handleOnChange} />
       <Button type='submit'>追加</Button>
     </StyledForm>
   );

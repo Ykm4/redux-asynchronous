@@ -1,6 +1,24 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { GetTodo, AddTodo, DeleteTodo, UpdateTodo } from './actions/todoAction';
+
+export const useForm = (post) => {
+  const [text, setText] = useState('');
+
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+    // 空文字・空白や改行に対してのvalidation
+    if (!text || !text.match(/\S/g)) return;
+    post(text);
+    setText('');
+  };
+
+  const handleOnChange = (event) => {
+    setText(event.target.value);
+  };
+  return { text, handleOnSubmit, handleOnChange };
+};
 
 export const useFetchData = () => {
   const dispatch = useDispatch();
@@ -9,17 +27,17 @@ export const useFetchData = () => {
     const data = await res.data;
     dispatch(GetTodo(data));
   };
-  return [getTodo];
+  return getTodo;
 };
 
-export const useAddData = () => {
+export const usePost = () => {
   const dispatch = useDispatch();
   const addTodo = async (text) => {
     const res = await axios.post('/list', { task: text });
     const data = await res.data;
     dispatch(AddTodo(data));
   };
-  return [addTodo];
+  return addTodo;
 };
 
 export const useDeleteData = () => {
@@ -28,7 +46,7 @@ export const useDeleteData = () => {
     await axios.delete(`/list/${id}`);
     dispatch(DeleteTodo(id));
   };
-  return [deleteTodo];
+  return deleteTodo;
 };
 
 export const useUpdateData = () => {
@@ -38,5 +56,5 @@ export const useUpdateData = () => {
     const data = res.data;
     dispatch(UpdateTodo(id, data));
   };
-  return [updateTodo];
+  return updateTodo;
 };

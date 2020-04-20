@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Form from '../components/Form';
-import { useAddData } from '../customHook';
+import { useForm, usePost } from '../customHook';
 
 const FormContainer = () => {
-  const [text, setText] = useState('');
-  const [addTodo] = useAddData();
+  const addTodo = usePost();
+  const { text, handleOnSubmit, handleOnChange } = useForm(addTodo);
 
-  const handleAddTodo = (event) => {
-    event.preventDefault();
-    // 空文字・空白や改行に対してのvalidation
-    if (!text || !text.match(/\S/g)) return;
-    addTodo(text);
-    setText('');
-  };
-
-  return <Form handleAddTodo={handleAddTodo} text={text} setText={setText} />;
+  return (
+    <Form
+      handleOnSubmit={handleOnSubmit}
+      handleOnChange={handleOnChange}
+      text={text}
+    />
+  );
 };
 
 export default FormContainer;

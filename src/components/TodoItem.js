@@ -5,8 +5,8 @@ import { useDeleteData, useUpdateData } from '../customHook';
 const TodoItem = ({ todo }) => {
   const { id, task } = todo;
   const [text, setText] = useState(task);
-  const [deleteTodo] = useDeleteData();
-  const [updateTodo] = useUpdateData();
+  const deleteTodo = useDeleteData();
+  const updateTodo = useUpdateData();
 
   return (
     <StyledTodoItem>

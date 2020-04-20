@@ -5,7 +5,7 @@ import { useFetchData } from '../customHook';
 
 const TodoList = () => {
   const { todoList } = useSelector((state) => state.todo);
-  const [getTodo] = useFetchData();
+  const getTodo = useFetchData();
   useEffect(() => {
     getTodo();
     // eslint-disable-next-line
