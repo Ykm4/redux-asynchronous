@@ -16,7 +16,7 @@ React + Reduxを使ったTodoApp
 Reduxでの非同期処理の正解が分からず**Redux-thun**kを導入してActionに非同期処理を書いていましたが、Actionが肥大していきそうだと感じたので**Custom Hooks**を用いての記述に変更しました。
 
 
-#react/how-to-learn
+# react/how-to-learn
 
 1. Reactの基礎を学ぶ
 
